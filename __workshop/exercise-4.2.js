@@ -1,14 +1,13 @@
 const requestPromise = require("request-promise");
 
-let memeReq = {
-  uri: "https://api.tronalddump.io/random/quote",
-  headers: {
-    Accept: "application/json",
-  },
-  json: true,
-};
-
 const getTronaldDumpQuote = async () => {
+  let memeReq = {
+    uri: "https://api.tronalddump.io/random/quote",
+    headers: {
+      Accept: "application/json",
+    },
+    json: true,
+  };
   try {
     const memeRes = await requestPromise(memeReq);
     return memeRes.value;
@@ -20,3 +19,5 @@ const getTronaldDumpQuote = async () => {
 getTronaldDumpQuote().then((quote) => {
   console.log(quote);
 });
+
+module.exports = { getTronaldDumpQuote };
